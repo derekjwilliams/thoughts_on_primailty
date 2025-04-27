@@ -55,6 +55,18 @@ Where:
 - f is any continuous map from X to Y
 - f̃ is the unique extension of f to βX
 
+### Construction Methods
+
+There are several ways to construct βX:
+
+Using the universal property: Define βX as the set of all ultrafilters on X, with a suitable topology.
+
+Using the algebra of bounded continuous functions: βX can be realized as the maximal ideal space of the C*-algebra C_b(X) of all bounded continuous functions from X to ℂ.
+
+Using embeddings: Embed X into a product of unit intervals [0,1]^I for some index set I, and take the closure of the image.
+
+
+
 ```mermaid
 flowchart TD
     A[Completely Regular Space X] --> B[Choose Construction Method]
