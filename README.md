@@ -6,10 +6,21 @@ Thatcher's thoughts on primality
 ## Converting from Docx to Markdown usng Pandoc
 
 ```bash
+
+myfilename="example"
+
 pandoc \
 -t markdown_strict \
 --extract-media='./attachments/$myfilename' \
 $myfilename.docx \
 -o $myfilename.md
+```
+
+```bash
+pandoc \
+-t markdown_strict \
+--extract-media='./attachments/Engine' \
+Engine.docx \
+-o Engine.md
 ```
 
