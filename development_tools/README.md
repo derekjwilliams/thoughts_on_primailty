@@ -70,6 +70,8 @@ git push
 
 ### Setting up SSH with GitHub on macOS
 
+Doing this can very intimidating, take it one step at a time.
+
 [This](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys) descibes checking for ssh keys
 
 [This](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) describes generating a new key are the official GitHub instructions
