@@ -67,6 +67,197 @@ git commit -a -m "[describe changes]"
 git push
 ```
 
+
+### Setting up SSH with GitHub on macOS
+
+[This](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys) descibes checking for ssh keys
+
+[This](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) describes generating a new key are the official GitHub instructions
+
+
+
+[This](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) describes adding a new SSH key to your GitHub account
+
+Abbreviated instructions based on those pages are shown below, see links above for full instructions
+
+#### Check for Existing SSH key
+
+From [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)
+
+Open Terminal and run:
+
+```bash
+ls -al ~/.ssh
+```
+
+Check the directory listing to see if you already have a public SSH key.  If you see files like `config`          `id_ed25519`      `id_ed25519.pub`  `known_hosts` then you don't need to Generate a new SSH key, and can skip to [Adding a new SSH key to your GitHub account](#adding_a_new_SSH_key_to_your_github_account)
+
+#### Generating a new SSH key
+
+
+Open Terminal.
+
+Paste the text below, replacing the email used in the example with your GitHub email address.
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+When you're prompted to "Enter a file in which to save the key", you can press Enter to accept the default file location. Please note that if you created SSH keys previously, ssh-keygen may ask you to rewrite another key, in which case we recommend creating a custom-named SSH key. To do so, type the default file location and replace id_ALGORITHM with your custom key name.
+
+```bash
+Enter a file in which to save the key (/Users/YOU/.ssh/id_ALGORITHM): [Press enter]
+```
+At the prompt, type a secure passphrase. For more information, see Working with SSH key passphrases.
+
+```bash
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+
+#### Adding your SSH key to the ssh-agent
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
+
+* First, check to see if your ~/.ssh/config file exists in the default location.
+
+```bash
+open ~/.ssh/config
+> The file /Users/YOU/.ssh/config does not exist.
+```
+
+If the file doesn't exist, create the file.
+
+```bash
+touch ~/.ssh/config
+```
+
+Open your ~/.ssh/config file, then modify the file to contain the following lines. If your SSH key file has a different name or path than the example code, modify the filename or path to match your current setup.
+
+```bash
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+Add your SSH private key to the ssh-agent and store your passphrase in the keychain. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_ed25519 in the command with the name of your private key file.
+
+```bash
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+
+#### Adding a new SSH key to your GitHub account
+
+See [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) for full instructions
+
+1. Copy the SSH public key to your clipboard.
+`
+pbcopy < ~/.ssh/id_ed25519.pub
+`
+1. In the upper-right corner of any page on GitHub, click your profile photo, then click **Settings**.
+
+1. In the "Access" section of the sidebar, click  SSH and GPG keys.
+
+1. Click **New SSH key** or **Add SSH key**.
+1. In the "Title" field, add a descriptive label for the new key. For example, if you're using a personal laptop, you might call this key "Personal laptop".
+1. Select the type of key, either authentication or signing.
+1. In the "Key" field, paste your public key.
+1. Click **Add SSH key**.
+1. If prompted, confirm access to your account on GitHub. For more information, see Sudo mode.
+
+### (Alternative) ChatGPT Instructions for Setting up SSH with GitHub on macOS
+
+Note, these instructions are from ChatGPT.
+
+#### Steps
+
+1. Check for existing SSH keys
+1. Generate a new SSH key (if needed)
+1. Add your SSH key to the ssh-agent
+1. Add the public key to GitHub
+1. Test the connection
+1. Use the SSH URL when cloning
+
+
+#### 1. Check for existing SSH keys
+Open Terminal and run:
+
+```bash
+ls -al ~/.ssh
+```
+
+Look for files like `id_ed25519` and `id_ed25519.pub` (or `id_rsa` / `id_rsa.pub`).
+
+#### 2. Generate a new SSH key (if needed)
+If you don’t have one, generate an Ed25519 key (recommended over RSA):
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+- Press Enter to accept the default location (`~/.ssh/id_ed25519`)
+- Add a passphrase when prompted (recommended for security)
+
+#### 3. Add your SSH key to the ssh-agent
+Start the agent and add your key:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+
+Ensure macOS adds your key automatically:
+
+```bash
+touch ~/.ssh/config
+```
+
+Add this to `~/.ssh/config`:
+
+```
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+  AddKeysToAgent yes
+  UseKeychain yes
+```
+
+#### 4. Add the public key to GitHub
+Copy your public key:
+
+```bash
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+Then go to [GitHub SSH settings](https://github.com/settings/keys) and click **"New SSH key"**. Paste the key and give it a recognizable name.
+
+#### 5. Test the connection
+Run:
+
+```
+ssh -T git@github.com
+```
+
+Expected output:
+
+```
+Hi your-username! You've successfully authenticated...
+```
+
+#### 6. Use the SSH URL when cloning
+Example:
+
+```
+git clone git@github.com:your-username/your-repo.git
+```
+
+
 ## Python3
 
 ### Install
