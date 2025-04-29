@@ -276,11 +276,10 @@ brew install python3
 
 VSCode is very similar, I prefer VSCodium because there are fewer restrictions
 
-https://vscodium.com/
 
 ### References
 
-https://brew.sh/
+https://vscodium.com/
 
 ### Installing Using Homebrew
 
