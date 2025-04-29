@@ -4,13 +4,15 @@
 
 * [VSCodium](#vscodium)
 
-* [VSCodium Extensions](#vscodium-extensions)
-
 * [Git](#git)
 
-* [Setting up SSH with GitHub on macOS](#setting-up-ssh-with-github-on-macos)
+  * [Setting up SSH with GitHub on macOS](#setting-up-ssh-with-github-on-macos)
 
 * [Python3](#python3)
+
+  * [Python Math Libraries](#python-math-libraries)
+
+  * [VSCodium Extensions](#vscodium-extensions)
 
 ## Homebrew
 
@@ -311,7 +313,7 @@ ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python
 ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
 ```
 
-## Python Math and Science Libraries
+## Python Math Libraries
 
 ### NumPy
 
