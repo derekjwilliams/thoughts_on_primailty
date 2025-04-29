@@ -4,6 +4,10 @@
 
 * [Git](#git)
 
+* [Setting up SSH with GitHub on macOS](#setting-up-ssh-with-github-on-macos)
+
+* [VSCodium](#vscodium)
+
 ## Homebrew
 
 Many of the installs for the development system will require Homebrew.  While there are alternatives to Homebrew, it is widely used and supported.
@@ -268,6 +272,23 @@ git clone git@github.com:your-username/your-repo.git
 brew install python3
 ```
 
+## VSCodium
+
+VSCode is very similar, I prefer VSCodium because there are fewer restrictions
+
+https://vscodium.com/
+
+### References
+
+https://brew.sh/
+
+### Installing Using Homebrew
+
+```bash
+brew install --cask vscodium
+```
+
+If you want to use VSCode, `brew install visual-studio-code`
 
 
 
