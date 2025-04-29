@@ -2,11 +2,15 @@
 
 * [Homebrew](#homebrew)
 
+* [VSCodium](#vscodium)
+
+* [VSCodium Extensions](#vscodium-extensions)
+
 * [Git](#git)
 
 * [Setting up SSH with GitHub on macOS](#setting-up-ssh-with-github-on-macos)
 
-* [VSCodium](#vscodium)
+* [Python3](#python3)
 
 ## Homebrew
 
@@ -21,6 +25,31 @@ https://brew.sh/
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+
+## VSCodium
+
+VSCode is very similar, I prefer VSCodium because there are fewer restrictions
+
+### References
+
+https://vscodium.com/
+
+### Installing Using Homebrew
+
+```bash
+brew install --cask vscodium
+```
+
+If you want to use VSCode, `brew install visual-studio-code`
+
+You can now launch VSCodium by **⌘** + **Spacebar** and then typing `vsC`..., which will autocomplete to **VSCodium**.
+
+### Launcing from Terminal
+
+In VSCodium, Open the Command Palette ( **⌘** + **Shift** + **P**), type 'shell command', and run the Shell Command: Install 'code' command in PATH command.
+
+*Note: **⌘** is the **Cmd(command)** key*
+
 ## Git
 
 ### References
@@ -272,22 +301,123 @@ git clone git@github.com:your-username/your-repo.git
 brew install python3
 ```
 
-## VSCodium
-
-VSCode is very similar, I prefer VSCodium because there are fewer restrictions
-
-
-### References
-
-https://vscodium.com/
-
-### Installing Using Homebrew
+### Add Symbolic Links
 
 ```bash
-brew install --cask vscodium
+ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python
 ```
 
-If you want to use VSCode, `brew install visual-studio-code`
+```bash
+ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
+```
+
+## Python Math and Science Libraries
+
+### NumPy
+
+https://numpy.org/
+
+#### Install
+
+```bash
+pip3 install numpy
+```
+
+### PyTorch
+
+https://pytorch.org/
+
+#### Install
+
+```bash
+pip3 install torch torchvision
+```
+
+### Sagemath
+
+https://www.sagemath.org/
+
+#### Install
+
+Download the dmg by following the links here https://github.com/3-manifolds/Sage_macOS/releases
+
+The file to download will be `SageMath-10.6_arm64.dmg`, or similar.  After the download is complete double click on the file in the Downloads folder, this will open a dialog, in the dialog drag SageMath-10-6 icon to Applications folder icon in the dialog.  You can now launch SageMath by **⌘** + **Spacebar** and then typing `Sag`... which will autocomplete to **SageMath-10-6**.  SageMath will be launch a dialog, select a location for JupyterLab or Jupyter Notebook, then SageMath will launch in a browser window.
+
+### venv
+
+
+Included with current version of Python 3.
+
+This looks like a nice resource for using venv https://realpython.com/python-virtual-environments-a-primer/.  Using venv is optional, but can be very helpful.
+
+Typically the steps would be
+
+```bash
+python3 -m venv ~/development/some-cool-environment
+```
+
+```bash
+source ~/development/some-cool-environment/bin/activate
+```
+
+```bash
+pip3 install numpy
+```
+Code away here, when complete:
+
+```bash
+deactivate
+```
+
+### Ruff
+
+Linter and formatter for Python
+
+#### Reference
+
+https://docs.astral.sh/ruff/
+
+#### Installing
+
+```bash
+pip3 install ruff
+```
+
+### uv
+
+Alternative to pip
+
+#### Reference
+
+https://docs.astral.sh/uv/
+
+#### Installing
+
+```bash
+pip3 install uv
+```
+
+## VSCodium Extensions
+
+Also works with VSCode.
+
+Ordered by usefulness (IMHO)
+
+[Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) - Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.
+
+[Python Indent](https://marketplace.visualstudio.com/items?itemName=KevinRose.vsc-python-indent) - Correct Python indentation
+
+[Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) - support for the Ruff linter and formatter
+
+[autoDocstring](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) - Generates python docstrings automatically
+
+
+[Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) - Jupyter notebook support, interactive programming and computing that supports Intellisense, debugging and more.
+
+[Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance) - A performant, feature-rich language server for Python in VS Code
+
+
+
 
 
 
